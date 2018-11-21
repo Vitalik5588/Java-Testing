@@ -1,9 +1,7 @@
 package ContactFormTest;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,9 +9,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 
 public class ContactTest {
-    WebDriver driver;
-    WebDriverWait wait;
-    FunctionsForContactForm functionsCF;
+    private WebDriver driver;
+    private WebDriverWait wait;
+    private FunctionsForContactForm functionsCF;
 
     @BeforeMethod
     public void setDriver(){
@@ -30,7 +28,7 @@ public class ContactTest {
         driver.quit();
     }
 
-    @Test(priority = 0 )
+    @Test
     public void positiveTest(){
 
         functionsCF.fillFirstName("Моє імя");
@@ -58,7 +56,6 @@ public class ContactTest {
         String[] wrongPhoneNumber = {"QWERTY","asdsdx","!@#$%^&*(","n13435","1234v","123+","+123+","+123-456+"};
         String[] goodPhoneNumber = {"12345","+4321","+4321-2321","+321-2321-","-123-45-67-"};
 
-
         for (String number:wrongPhoneNumber) {
             functionsCF.fillPhoneNumber(number);
             functionsCF.clickSubmitButton();
@@ -76,12 +73,10 @@ public class ContactTest {
 
     }
 
-
     @Test(priority = 3)
     public void emailFieldTest() {
         String[] wrongEmail = {"12345","qwerty","qwewr.","aert.qw","asdf.asdf.com","12rfvdx","43yhnd@gmail.","qaz3222@gmail.com.","@gmail.com","asdas#sd.sd"};
         String[] goodEmail = {"poiuy@rfv.cde","123@12.345","123qwer@vcxcvcxxvbvcx.xccxcxxc"};
-
 
         for (String email:wrongEmail) {
             functionsCF.fillEmail(email);
@@ -99,8 +94,5 @@ public class ContactTest {
         }
 
     }
-
-
-
 
 }
